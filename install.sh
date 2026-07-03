@@ -30,6 +30,21 @@ link_dir "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
 # tmux
 link_dir "$DOTFILES_DIR/tmux" "$HOME/.config/tmux"
 
+# Install Tmux Plugin Manager (TPM) if missing
+TPM_DIR="$HOME/.config/tmux/plugins/tpm"
+if [[ ! -d "$TPM_DIR" ]]; then
+  echo "Installing Tmux Plugin Manager (TPM)..."
+  git clone https://github.com/tmux-plugins/tpm.git "$TPM_DIR"
+else
+  echo "TPM already installed at $TPM_DIR"
+fi
+
+# Install tmux plugins headlessly (safe to run even if already installed)
+if command -v tmux &>/dev/null; then
+  echo "Installing tmux plugins..."
+  "$TPM_DIR/bin/install_plugins" || true
+fi
+
 # helix
 link_dir "$DOTFILES_DIR/helix" "$HOME/.config/helix"
 

@@ -59,6 +59,14 @@ fi
 # helix
 link_dir "$DOTFILES_DIR/helix" "$HOME/.config/helix"
 
+# herdr (tmux agent-aware multiplexer)
+if [[ ! -f "$HOME/.local/bin/herdr" ]]; then
+  echo "Installing herdr..."
+  "$DOTFILES_DIR/herdr/install.sh"
+else
+  echo "herdr already installed at $HOME/.local/bin/herdr"
+fi
+
 # Ensure local bin is on PATH (AppImage nvim lives here)
 mkdir -p "$HOME/.local/bin"
 if ! grep -q "$HOME/.local/bin" "$HOME/.bashrc" 2>/dev/null; then

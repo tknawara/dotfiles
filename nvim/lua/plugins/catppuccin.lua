@@ -7,7 +7,7 @@ return {
     config = function()
       require("catppuccin").setup({
         flavour = "mocha", -- latte, frappe, macchiato, mocha
-        transparent_background = true,
+        transparent_background = false,
         show_end_of_buffer = false,
         term_colors = true,
         dim_inactive = {
@@ -33,15 +33,7 @@ return {
           operators = {},
         },
         color_overrides = {},
-        custom_highlights = function(colors)
-          return {
-            -- Force transparent backgrounds even if another plugin resets them
-            Normal = { bg = "NONE", ctermbg = "NONE" },
-            NormalNC = { bg = "NONE", ctermbg = "NONE" },
-            NormalFloat = { bg = "NONE", ctermbg = "NONE" },
-            FloatBorder = { bg = "NONE", ctermbg = "NONE" },
-          }
-        end,
+        custom_highlights = {},
         integrations = {
           aerial = true,
           alpha = true,

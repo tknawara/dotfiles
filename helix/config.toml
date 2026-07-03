@@ -31,7 +31,7 @@ character = "│"
 skip-levels = 1
 
 [editor.whitespace]
-render = "all"
+render = "none"
 
 [editor.lsp]
 display-messages = true

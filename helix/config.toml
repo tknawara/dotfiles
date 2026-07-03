@@ -1,0 +1,61 @@
+theme = "catppuccin_mocha"
+
+[editor]
+line-number = "relative"
+mouse = true
+color-modes = true
+cursorline = true
+cursor-shape = { insert = "bar", normal = "block", select = "underline" }
+idle-timeout = 50
+completion-timeout = 5
+completion-trigger-len = 2
+true-color = true
+
+[editor.statusline]
+left = ["mode", "spinner", "file-name", "file-type", "total-line-numbers", "position-percentage"]
+center = []
+right = ["diagnostics", "selections", "register", "position", "workspace-diagnostics"]
+separator = "│"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.indent-guides]
+render = true
+character = "│"
+skip-levels = 1
+
+[editor.whitespace]
+render = "all"
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
+
+[editor.soft-wrap]
+enable = true
+
+[keys.normal]
+# easier command palette
+C-p = "command_palette"
+# save
+C-s = ":w"
+# quit
+C-q = ":q"
+
+[keys.insert]
+# same save in insert
+C-s = ["normal_mode", ":w"]
+
+[keys.select]
+C-s = ["normal_mode", ":w"]
+
+# Catppuccin Mocha palette for UI transparency overrides.
+# Helix doesn't support a global transparent background option;
+# transparency must be handled by the terminal emulator + theme.
+# The built-in "catppuccin_mocha" theme is used above.

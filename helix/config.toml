@@ -5,7 +5,7 @@ line-number = "relative"
 mouse = true
 color-modes = true
 cursorline = true
-cursor-shape = { insert = "bar", normal = "block", select = "underline" }
+
 idle-timeout = 50
 completion-timeout = 5
 completion-trigger-len = 2

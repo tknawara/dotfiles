@@ -27,8 +27,19 @@ link_dir() {
 # nvim
 link_dir "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
 
-# tmux
+# tmux: backup and replace any existing file/dir, then restore TPM on first install
+TMUX_TARGET="$HOME/.config/tmux"
+TPM_BACKUP=""
+if [[ -d "$TMUX_TARGET/plugins/tpm" ]]; then
+  TPM_BACKUP="$BACKUP_DIR/tpm_backup"
+  mkdir -p "$TPM_BACKUP"
+  mv "$TMUX_TARGET/plugins/tpm" "$TPM_BACKUP/"
+fi
 link_dir "$DOTFILES_DIR/tmux" "$HOME/.config/tmux"
+if [[ -n "$TPM_BACKUP" && -d "$TPM_BACKUP/tpm" ]]; then
+  mkdir -p "$HOME/.config/tmux/plugins"
+  mv "$TPM_BACKUP/tpm" "$HOME/.config/tmux/plugins/"
+fi
 
 # Install Tmux Plugin Manager (TPM) if missing
 TPM_DIR="$HOME/.config/tmux/plugins/tpm"

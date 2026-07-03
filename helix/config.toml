@@ -55,7 +55,6 @@ C-s = ["normal_mode", ":w"]
 [keys.select]
 C-s = ["normal_mode", ":w"]
 
-# Catppuccin Mocha palette for UI transparency overrides.
-# Helix doesn't support a global transparent background option;
-# transparency must be handled by the terminal emulator + theme.
-# The built-in "catppuccin_mocha" theme is used above.
+# Note: Helix does not have a global transparent-background setting.
+# The terminal emulator must be transparent for the background to appear transparent.
+# true-color is enabled above so the Catppuccin Mocha theme renders correctly.

@@ -100,6 +100,14 @@ if ! grep -q "$HOME/.local/bin" "$HOME/.bashrc" 2>/dev/null; then
   echo "Added $HOME/.local/bin to PATH in ~/.bashrc"
 fi
 
+# Set Helix as the default editor ($EDITOR / $VISUAL)
+if ! grep -qE '^export EDITOR=' "$HOME/.bashrc" 2>/dev/null; then
+  printf '\n# Default editor: Helix (managed by dotfiles)\nexport EDITOR="hx"\nexport VISUAL="hx"\n' >> "$HOME/.bashrc"
+  echo "Set EDITOR/VISUAL to hx in ~/.bashrc"
+else
+  echo "EDITOR already set in ~/.bashrc"
+fi
+
 echo ""
 echo "Dotfiles installed. Open a new shell or run:"
 echo "  source ~/.bashrc"

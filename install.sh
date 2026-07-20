@@ -59,6 +59,32 @@ fi
 # helix
 link_dir "$DOTFILES_DIR/helix" "$HOME/.config/helix"
 
+# yazi: terminal file manager (Catppuccin Mocha)
+link_dir "$DOTFILES_DIR/yazi" "$HOME/.config/yazi"
+
+# Install yazi + ya binaries from GitHub releases if missing
+if [[ ! -x "$HOME/.local/bin/yazi" ]]; then
+  echo "Installing yazi..."
+  YAZI_ARCH=""
+  case "$(uname -m)" in
+    x86_64)  YAZI_ARCH="x86_64-unknown-linux-gnu" ;;
+    aarch64) YAZI_ARCH="aarch64-unknown-linux-gnu" ;;
+    *) echo "Unsupported arch for yazi: $(uname -m)" >&2 ;;
+  esac
+  if [[ -n "$YAZI_ARCH" ]]; then
+    YAZI_URL="https://github.com/sxyazi/yazi/releases/latest/download/yazi-${YAZI_ARCH}.zip"
+    YAZI_TMP="$(mktemp -d)"
+    (cd "$YAZI_TMP" && curl -fsSL "$YAZI_URL" -o yazi.zip && unzip -o yazi.zip >/dev/null)
+    install -m 0755 "$YAZI_TMP/yazi-${YAZI_ARCH}/yazi" "$HOME/.local/bin/yazi"
+    install -m 0755 "$YAZI_TMP/yazi-${YAZI_ARCH}/ya"   "$HOME/.local/bin/ya"
+    rm -rf "$YAZI_TMP"
+    echo "yazi installed at $HOME/.local/bin/yazi"
+    "$HOME/.local/bin/yazi" --version
+  fi
+else
+  echo "yazi already installed at $HOME/.local/bin/yazi"
+fi
+
 # herdr (tmux agent-aware multiplexer)
 if [[ ! -f "$HOME/.local/bin/herdr" ]]; then
   echo "Installing herdr..."
@@ -82,3 +108,4 @@ echo "Then run:"
 echo "  nvim     # LazyVim will bootstrap"
 echo "  tmux     # tmux with Catppuccin Mocha status bar"
 echo "  hx       # Helix with Catppuccin Mocha"
+echo "  yazi     # file manager with Catppuccin Mocha"

@@ -1,0 +1,14 @@
+# yazi configuration
+# Docs: https://yazi-rs.github.io/docs/configuration/yazi
+#
+# Only the [opener] edit rule is overridden here. Everything else falls back
+# to yazi's built-in defaults (see `yazi-default.toml`), including the [open]
+# rules that decide when "edit" is used for text files and folders.
+
+[opener]
+
+# Use Helix as the editor. Overrides the default `${EDITOR:-vi}` so yazi
+# always uses Helix regardless of the $EDITOR inherited by the launching shell.
+edit = [
+	{ run = 'hx %s', desc = "Helix", for = "unix", block = true },
+]

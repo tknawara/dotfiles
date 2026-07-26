@@ -85,6 +85,31 @@ else
   echo "yazi already installed at $HOME/.local/bin/yazi"
 fi
 
+# lazygit: git TUI (Catppuccin Mocha)
+link_dir "$DOTFILES_DIR/lazygit" "$HOME/.config/lazygit"
+
+# Install lazygit binary from GitHub releases if missing
+if [[ ! -x "$HOME/.local/bin/lazygit" ]]; then
+  echo "Installing lazygit..."
+  LAZYGIT_ARCH=""
+  case "$(uname -m)" in
+    x86_64)  LAZYGIT_ARCH="x86_64" ;;
+    aarch64) LAZYGIT_ARCH="arm64" ;;
+    *) echo "Unsupported arch for lazygit: $(uname -m)" >&2 ;;
+  esac
+  if [[ -n "$LAZYGIT_ARCH" ]]; then
+    LAZYGIT_VERSION="$(curl -fsSL https://api.github.com/repos/jesseduffield/lazygit/releases/latest | sed -n 's/.*"tag_name": *"v\(.*\)".*/\1/p')"
+    LAZYGIT_TMP="$(mktemp -d)"
+    (cd "$LAZYGIT_TMP" && curl -fsSL "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_${LAZYGIT_ARCH}.tar.gz" -o lazygit.tar.gz && tar xzf lazygit.tar.gz lazygit)
+    install -m 0755 "$LAZYGIT_TMP/lazygit" "$HOME/.local/bin/lazygit"
+    rm -rf "$LAZYGIT_TMP"
+    echo "lazygit installed at $HOME/.local/bin/lazygit"
+    "$HOME/.local/bin/lazygit" --version
+  fi
+else
+  echo "lazygit already installed at $HOME/.local/bin/lazygit"
+fi
+
 # herdr (tmux agent-aware multiplexer)
 if [[ ! -f "$HOME/.local/bin/herdr" ]]; then
   echo "Installing herdr..."
@@ -117,3 +142,4 @@ echo "  nvim     # LazyVim will bootstrap"
 echo "  tmux     # tmux with Catppuccin Mocha status bar"
 echo "  hx       # Helix with Catppuccin Mocha"
 echo "  yazi     # file manager with Catppuccin Mocha"
+echo "  lazygit  # git TUI with Catppuccin Mocha"

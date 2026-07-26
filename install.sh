@@ -110,6 +110,28 @@ else
   echo "lazygit already installed at $HOME/.local/bin/lazygit"
 fi
 
+# Install delta binary (diff pager used by lazygit) from GitHub releases if missing
+if [[ ! -x "$HOME/.local/bin/delta" ]]; then
+  echo "Installing delta..."
+  DELTA_ARCH=""
+  case "$(uname -m)" in
+    x86_64)  DELTA_ARCH="x86_64-unknown-linux-gnu" ;;
+    aarch64) DELTA_ARCH="aarch64-unknown-linux-gnu" ;;
+    *) echo "Unsupported arch for delta: $(uname -m)" >&2 ;;
+  esac
+  if [[ -n "$DELTA_ARCH" ]]; then
+    DELTA_VERSION="$(curl -fsSL https://api.github.com/repos/dandavison/delta/releases/latest | sed -n 's/.*"tag_name": *"\(.*\)".*/\1/p')"
+    DELTA_TMP="$(mktemp -d)"
+    (cd "$DELTA_TMP" && curl -fsSL "https://github.com/dandavison/delta/releases/download/${DELTA_VERSION}/delta-${DELTA_VERSION}-${DELTA_ARCH}.tar.gz" -o delta.tar.gz && tar xzf delta.tar.gz)
+    install -m 0755 "$DELTA_TMP/delta-${DELTA_VERSION}-${DELTA_ARCH}/delta" "$HOME/.local/bin/delta"
+    rm -rf "$DELTA_TMP"
+    echo "delta installed at $HOME/.local/bin/delta"
+    "$HOME/.local/bin/delta" --version
+  fi
+else
+  echo "delta already installed at $HOME/.local/bin/delta"
+fi
+
 # herdr (tmux agent-aware multiplexer)
 if [[ ! -f "$HOME/.local/bin/herdr" ]]; then
   echo "Installing herdr..."

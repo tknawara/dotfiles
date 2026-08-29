@@ -1,0 +1,9 @@
+# Python: Helix's own bundled defaults list ty/ruff/jedi/pylsp as the
+# python language-servers, none of which are installed here, so Python LSP
+# silently did nothing. Swap in pyright (real hover/completion/type
+# checking) paired with ruff (fast diagnostics) - Helix's own recommended
+# combo. Install both yourself (`pixi global install pyright ruff`) — they
+# resolve via PATH (~/.pixi/bin) with no command/path override needed here.
+[[language]]
+name = "python"
+language-servers = ["pyright", "ruff"]

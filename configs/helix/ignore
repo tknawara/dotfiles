@@ -1,0 +1,4 @@
+# Helix reads this as a global ignore for the file picker and global search.
+# config.toml sets file-picker hidden = false to surface dotfiles; that also
+# exposes .git, which is thousands of objects in any working repo.
+.git/

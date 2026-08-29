@@ -1,0 +1,5 @@
+[settings]
+# atuin configuration (managed by gripsack — edit here, `grip apply`)
+
+[theme]
+name = "catppuccin-mocha-mauve"

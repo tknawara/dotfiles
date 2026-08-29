@@ -1,0 +1,4 @@
+# Intentionally no `theme` key: tuicr's built-in default reads better than the
+# bundled catppuccin-mocha that used to be pinned here. The file stays rather
+# than being deleted so the module keeps a config artifact to deploy — dropping
+# it would strand the already-deployed copy on existing machines.

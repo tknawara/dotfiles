@@ -1,0 +1,75 @@
+# gh-dash - PR/issue dashboard TUI.
+#
+# The API host is NOT configured here: gh-dash resolves it through go-gh from
+# gh's own hosts.yml, so it follows `gh auth login` automatically. Set GH_HOST
+# only if a second host is ever added to hosts.yml.
+
+prSections:
+  - title: Needs My Review
+    filters: is:open review-requested:@me
+  - title: Mine
+    filters: is:open author:@me
+  - title: Involved
+    filters: is:open involves:@me -author:@me -review-requested:@me
+
+issuesSections:
+  - title: Assigned
+    filters: is:open assignee:@me
+
+defaults:
+  view: prs
+  prsLimit: 20
+  issuesLimit: 20
+  preview:
+    open: true
+    width: 0.5
+  refetchIntervalMinutes: 30
+
+pager:
+  # `d` (view PR diff) keeps its built-in behaviour but renders through hunk,
+  # rather than bare less.
+  diff: hunk pager
+
+keybindings:
+  prs:
+    - key: v
+      name: tuicr review
+      command: tuicr pr {{.RepoName}}#{{.PrNumber}}
+
+    # Overrides the `checkout` builtin, which runs `gh pr checkout` inside the
+    # repo resolved from repoPaths and so switches branches in a live working
+    # copy. checkout.sh builds a throwaway worktree under ~/.cache instead.
+    # repoPaths is deliberately left unset - nothing reads it once this is bound.
+    - key: C
+      name: worktree checkout
+      command: "$HOME/.config/gh-dash/checkout.sh {{.RepoName}} {{.PrNumber}}"
+
+theme:
+  ui:
+    sectionsShowCount: true
+    table:
+      showSeparator: true
+      compact: false
+  colors:
+    text:
+      primary: "#cdd6f4" # text
+      secondary: "#bac2de" # subtext1
+      inverted: "#1e1e2e" # base
+      faint: "#6c7086" # overlay0
+      warning: "#f9e2af" # yellow
+      success: "#a6e3a1" # green
+      error: "#f38ba8" # red
+      actor: "#b4befe" # lavender
+    background:
+      selected: "#313244" # surface0
+    border:
+      primary: "#b4befe" # lavender - same accent as the eza theme
+      secondary: "#585b70" # surface2
+      faint: "#45475a" # surface1
+    icon:
+      newcontributor: "#94e2d5" # teal
+      contributor: "#89b4fa" # blue
+      collaborator: "#cba6f7" # mauve
+      member: "#f9e2af" # yellow
+      owner: "#fab387" # peach
+      unknownrole: "#6c7086" # overlay0

@@ -8,10 +8,11 @@ import { dep, githubRelease, module, symlink, tree, verifyBinary } from "@gripsa
 export default module("gh-dash", {
   fetch: githubRelease({
     repo: "dlvhdr/gh-dash",
-    asset: "gh-dash_{version}_linux-amd64",
+    asset: "gh-dash_{version}_{os}-{arch.go}",
   }),
-  install: { "gh-dash_{version}_linux-amd64": symlink("~/.local/bin/gh-dash") },
+  install: { "gh-dash_{version}_{os}-{arch.go}": symlink("~/.local/bin/gh-dash") },
   config: tree("configs/gh-dash", "~/.config/gh-dash", "owned"),
   depends: [dep("gh"), dep("tuicr"), dep("hunk")],
-  verify: verifyBinary("gh-dash_{version}_linux-amd64", ["--version"]),
+    lint: "gh-dash",
+  verify: verifyBinary("gh-dash_{version}_{os}-{arch.go}", ["--version"]),
 });

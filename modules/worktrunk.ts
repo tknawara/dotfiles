@@ -5,11 +5,11 @@ import { githubRelease, module, symlink, verifyBinary } from "@gripsack/core";
 export default module("worktrunk", {
   fetch: githubRelease({
     repo: "max-sixty/worktrunk",
-    asset: "worktrunk-x86_64-unknown-linux-musl.tar.xz",
+    asset: "worktrunk-{target}.tar.xz",
   }),
   install: {
-    "worktrunk-x86_64-unknown-linux-musl/wt": symlink("~/.local/bin/wt"),
-    "worktrunk-x86_64-unknown-linux-musl/git-wt": symlink("~/.local/bin/git-wt"),
+    "worktrunk-{target}/wt": symlink("~/.local/bin/wt"),
+    "worktrunk-{target}/git-wt": symlink("~/.local/bin/git-wt"),
   },
-  verify: verifyBinary("worktrunk-x86_64-unknown-linux-musl/wt", ["--version"]),
+  verify: verifyBinary("worktrunk-{target}/wt", ["--version"]),
 });

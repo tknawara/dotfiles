@@ -5,9 +5,10 @@ import { githubRelease, module, symlink, verifyBinary } from "@gripsack/core";
 export default module("starship", {
   fetch: githubRelease({
     repo: "starship/starship",
-    asset: "starship-x86_64-unknown-linux-musl.tar.gz",
+    asset: "starship-{target}.tar.gz",
   }),
   install: { starship: symlink("~/.local/bin/starship") },
   config: { "configs/starship/starship.toml": symlink("~/.config/starship/starship.toml") },
+    lint: "starship",
   verify: verifyBinary("starship", ["--version"]),
 });

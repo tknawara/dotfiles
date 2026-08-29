@@ -26,12 +26,17 @@ is locked in `grip.lock`.
 | shell | fish (static binary), starship prompt, atuin history, a `merge` block that makes fish the interactive shell without chsh |
 | editor | helix (conda-forge via pixi) |
 | multiplexer | tmux (conda-forge) + TPM (pinned git clone) |
-| TUIs | gitui, yazi, gh-dash, tuicr, hunk, worktrunk |
-| CLI | ripgrep, fd, eza, fastfetch, htop, gh — see `modules/cli.ts` |
+| TUIs | gitui, yazi, gh-dash, tuicr, hunk, worktrunk, lazygit |
+| editor | neovim (LazyVim) — lazy-lock.json is `tracked_copy`, the rest `owned` |
+| CLI | ripgrep, fd, eza, fastfetch, htop, gh, herdr — see `modules/cli.ts` |
 
-`nvim/`, `lazygit/`, `herdr/` are legacy and unmanaged — still here,
-still working, adopted into gripsack when I feel like it (that's the
-point of the ownership model: adopt gradually).
+Asset patterns use platform placeholders (`{system}`, `{target}`,
+`{arch}`, `{arch.go}`, `{os}` — gripsack 0016), so the same modules
+work on linux-x86_64 and aarch64-macos. Versions float in the modules
+and pin in `locks/laptop.lock`.
+
+`herdr/` is fully replaced by `modules/herdr.ts`. Nothing left is
+unmanaged — that's the point.
 
 ## Layout
 

@@ -6,9 +6,9 @@ import { githubRelease, module, symlink, verifyBinary } from "@gripsack/core";
 export default module("bat", {
   fetch: githubRelease({
     repo: "sharkdp/bat",
-    asset: "bat-{version}-x86_64-unknown-linux-musl.tar.gz",
+    asset: "bat-{version}-{target}.tar.gz",
   }),
-  install: { "bat-{version}-x86_64-unknown-linux-musl/bat": symlink("~/.local/bin/bat") },
+  install: { "bat-{version}-{target}/bat": symlink("~/.local/bin/bat") },
   config: { "configs/bat/config": symlink("~/.config/bat/config") },
-  verify: verifyBinary("bat-{version}-x86_64-unknown-linux-musl/bat", ["--version"]),
+  verify: verifyBinary("bat-{version}-{target}/bat", ["--version"]),
 });

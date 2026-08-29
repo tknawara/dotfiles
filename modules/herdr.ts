@@ -6,8 +6,8 @@ import { githubRelease, module, symlink, verifyBinary } from "@gripsack/core";
 export default module("herdr", {
   fetch: githubRelease({
     repo: "herdrdev/herdr",
-    asset: "herdr-linux-x86_64",
+    asset: "herdr-{os}-{arch}",
   }),
-  install: { "herdr-linux-x86_64": symlink("~/.local/bin/herdr") },
-  verify: verifyBinary("herdr-linux-x86_64", ["--version"]),
+  install: { "herdr-{os}-{arch}": symlink("~/.local/bin/herdr") },
+  verify: verifyBinary("herdr-{os}-{arch}", ["--version"]),
 });

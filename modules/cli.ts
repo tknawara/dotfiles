@@ -8,25 +8,25 @@ export default [
   module("ripgrep", {
     fetch: githubRelease({
       repo: "BurntSushi/ripgrep",
-      asset: "ripgrep-{version}-x86_64-unknown-linux-musl.tar.gz",
+      asset: "ripgrep-{version}-{target}.tar.gz",
     }),
-    install: { "ripgrep-{version}-x86_64-unknown-linux-musl/rg": symlink("~/.local/bin/rg") },
-    verify: verifyBinary("ripgrep-{version}-x86_64-unknown-linux-musl/rg", ["--version"]),
+    install: { "ripgrep-{version}-{target}/rg": symlink("~/.local/bin/rg") },
+    verify: verifyBinary("ripgrep-{version}-{target}/rg", ["--version"]),
   }),
 
   module("fd", {
     fetch: githubRelease({
       repo: "sharkdp/fd",
-      asset: "fd-{version}-x86_64-unknown-linux-musl.tar.gz",
+      asset: "fd-{version}-{target}.tar.gz",
     }),
-    install: { "fd-{version}-x86_64-unknown-linux-musl/fd": symlink("~/.local/bin/fd") },
-    verify: verifyBinary("fd-{version}-x86_64-unknown-linux-musl/fd", ["--version"]),
+    install: { "fd-{version}-{target}/fd": symlink("~/.local/bin/fd") },
+    verify: verifyBinary("fd-{version}-{target}/fd", ["--version"]),
   }),
 
   module("eza", {
     fetch: githubRelease({
       repo: "eza-community/eza",
-      asset: "eza_x86_64-unknown-linux-gnu.tar.gz",
+      asset: "eza_{arch}-unknown-linux-gnu.tar.gz",
     }),
     install: { eza: symlink("~/.local/bin/eza") },
     verify: verifyBinary("eza", ["--version"]),
@@ -35,10 +35,10 @@ export default [
   module("fastfetch", {
     fetch: githubRelease({
       repo: "fastfetch-cli/fastfetch",
-      asset: "fastfetch-linux-amd64.tar.gz",
+      asset: "fastfetch-{os}-{arch.go}.tar.gz",
     }),
-    install: { "fastfetch-linux-amd64/usr/bin/fastfetch": symlink("~/.local/bin/fastfetch") },
-    verify: verifyBinary("fastfetch-linux-amd64/usr/bin/fastfetch", ["--version"]),
+    install: { "fastfetch-{os}-{arch.go}/usr/bin/fastfetch": symlink("~/.local/bin/fastfetch") },
+    verify: verifyBinary("fastfetch-{os}-{arch.go}/usr/bin/fastfetch", ["--version"]),
   }),
 
   module("htop", {

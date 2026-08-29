@@ -21,10 +21,12 @@ import gitui from "../modules/gitui.ts";
 import helix from "../modules/helix.ts";
 import herdr from "../modules/herdr.ts";
 import hunk from "../modules/hunk.ts";
+import lazygit from "../modules/lazygit.ts";
 import shell from "../modules/shell.ts";
 import starship from "../modules/starship.ts";
 import tmux from "../modules/tmux.ts";
 import tpm from "../modules/tpm.ts";
+import nvim from "../modules/nvim.ts";
 import tuicr from "../modules/tuicr.ts";
 import worktrunk from "../modules/worktrunk.ts";
 import yazi from "../modules/yazi.ts";
@@ -46,6 +48,8 @@ export default defineEnv(() => ({
     worktrunk,
     ghDash,
     hunk,
+    lazygit,
+    nvim,
     herdr,
     ...cli,
   ],

@@ -7,5 +7,6 @@ export default module("helix", {
   fetch: pixi("helix"),
   install: { "bin/hx": symlink("~/.local/bin/hx") },
   config: tree("configs/helix", "~/.config/helix", "owned"),
+    lint: "helix",
   verify: verifyBinary("bin/hx", ["--version"]),
 });

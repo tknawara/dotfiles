@@ -4,13 +4,13 @@
       "fetch": {
         "kind": "github_release",
         "repo": "atuinsh/atuin",
-        "asset": "atuin-x86_64-unknown-linux-musl.tar.gz"
+        "asset": "atuin-{target}.tar.gz"
       },
       "resolved": {
         "url": "https://github.com/atuinsh/atuin/releases/download/v18.20.1/atuin-x86_64-unknown-linux-musl.tar.gz",
         "version": "v18.20.1",
         "sha256": "1ad3e8162b4570118a3e05ae6b9ca0575aad0bb018a83001805c4f52d4fe9c8f",
-        "tree256": "18ea94ac85d0cf4fdc6f18d1d6e73e967493a869049d24ac07077e6d1be44dc1",
+        "tree256": "d9d78740badbe6168f7b41d5582482662135e940a584d8582e394cf9228ce543",
         "api_url": "https://api.github.com/repos/atuinsh/atuin/releases/assets/531543854"
       }
     },
@@ -18,7 +18,7 @@
       "fetch": {
         "kind": "github_release",
         "repo": "sharkdp/bat",
-        "asset": "bat-{version}-x86_64-unknown-linux-musl.tar.gz"
+        "asset": "bat-{version}-{target}.tar.gz"
       },
       "resolved": {
         "url": "https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-x86_64-unknown-linux-musl.tar.gz",
@@ -32,7 +32,7 @@
       "fetch": {
         "kind": "github_release",
         "repo": "eza-community/eza",
-        "asset": "eza_x86_64-unknown-linux-gnu.tar.gz"
+        "asset": "eza_{arch}-unknown-linux-gnu.tar.gz"
       },
       "resolved": {
         "url": "https://github.com/eza-community/eza/releases/download/v0.23.5/eza_x86_64-unknown-linux-gnu.tar.gz",
@@ -46,7 +46,7 @@
       "fetch": {
         "kind": "github_release",
         "repo": "fastfetch-cli/fastfetch",
-        "asset": "fastfetch-linux-amd64.tar.gz"
+        "asset": "fastfetch-{os}-{arch.go}.tar.gz"
       },
       "resolved": {
         "url": "https://github.com/fastfetch-cli/fastfetch/releases/download/2.67.1/fastfetch-linux-amd64.tar.gz",
@@ -60,7 +60,7 @@
       "fetch": {
         "kind": "github_release",
         "repo": "sharkdp/fd",
-        "asset": "fd-{version}-x86_64-unknown-linux-musl.tar.gz"
+        "asset": "fd-{version}-{target}.tar.gz"
       },
       "resolved": {
         "url": "https://github.com/sharkdp/fd/releases/download/v10.5.0/fd-v10.5.0-x86_64-unknown-linux-musl.tar.gz",
@@ -74,7 +74,7 @@
       "fetch": {
         "kind": "github_release",
         "repo": "fish-shell/fish-shell",
-        "asset": "fish-{version}-linux-x86_64.tar.xz"
+        "asset": "fish-{version}-linux-{arch}.tar.xz"
       },
       "resolved": {
         "url": "https://github.com/fish-shell/fish-shell/releases/download/4.8.1/fish-4.8.1-linux-x86_64.tar.xz",
@@ -98,7 +98,7 @@
       "fetch": {
         "kind": "github_release",
         "repo": "dlvhdr/gh-dash",
-        "asset": "gh-dash_{version}_linux-amd64"
+        "asset": "gh-dash_{version}_{os}-{arch.go}"
       },
       "resolved": {
         "url": "https://github.com/dlvhdr/gh-dash/releases/download/v4.25.2/gh-dash_v4.25.2_linux-amd64",
@@ -112,7 +112,7 @@
       "fetch": {
         "kind": "github_release",
         "repo": "gitui-org/gitui",
-        "asset": "gitui-linux-x86_64.tar.gz"
+        "asset": "gitui-{os}-{arch}.tar.gz"
       },
       "resolved": {
         "url": "https://github.com/gitui-org/gitui/releases/download/v0.28.1/gitui-linux-x86_64.tar.gz",
@@ -136,7 +136,7 @@
       "fetch": {
         "kind": "github_release",
         "repo": "herdrdev/herdr",
-        "asset": "herdr-linux-x86_64"
+        "asset": "herdr-{os}-{arch}"
       },
       "resolved": {
         "url": "https://github.com/herdrdev/herdr/releases/download/v0.8.2/herdr-linux-x86_64",
@@ -170,11 +170,39 @@
         "api_url": "https://api.github.com/repos/modem-dev/hunk/releases/assets/535228769"
       }
     },
+    "lazygit": {
+      "fetch": {
+        "kind": "github_release",
+        "repo": "jesseduffield/lazygit",
+        "asset": "lazygit_{version}_{os}_{arch}.tar.gz"
+      },
+      "resolved": {
+        "url": "https://github.com/jesseduffield/lazygit/releases/download/v0.64.1/lazygit_0.64.1_linux_x86_64.tar.gz",
+        "version": "v0.64.1",
+        "sha256": "f8ea237c41f194cd799b48505518bfdaae4edf5a2ad6bd3d898e939785ee4532",
+        "tree256": "e40b81b11bf1087d97206417659ee986a997c1de47379e100dcae266cc7add47",
+        "api_url": "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/511894209"
+      }
+    },
+    "nvim": {
+      "fetch": {
+        "kind": "github_release",
+        "repo": "neovim/neovim",
+        "asset": "nvim-{os}-{arch}.tar.gz"
+      },
+      "resolved": {
+        "url": "https://github.com/neovim/neovim/releases/download/v0.12.5/nvim-linux-x86_64.tar.gz",
+        "version": "v0.12.5",
+        "sha256": "bce0f56eda1f1b1db6eee8f4133d7a38813ea07933837dd1777411ca384c6875",
+        "tree256": "d37ccf65955dd3b04994e74f22551b3f022ea5dd20dc7b4be09701d11cbf2256",
+        "api_url": "https://api.github.com/repos/neovim/neovim/releases/assets/526503737"
+      }
+    },
     "ripgrep": {
       "fetch": {
         "kind": "github_release",
         "repo": "BurntSushi/ripgrep",
-        "asset": "ripgrep-{version}-x86_64-unknown-linux-musl.tar.gz"
+        "asset": "ripgrep-{version}-{target}.tar.gz"
       },
       "resolved": {
         "url": "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-x86_64-unknown-linux-musl.tar.gz",
@@ -188,7 +216,7 @@
       "fetch": {
         "kind": "github_release",
         "repo": "starship/starship",
-        "asset": "starship-x86_64-unknown-linux-musl.tar.gz"
+        "asset": "starship-{target}.tar.gz"
       },
       "resolved": {
         "url": "https://github.com/starship/starship/releases/download/v1.26.0/starship-x86_64-unknown-linux-musl.tar.gz",
@@ -223,7 +251,7 @@
       "fetch": {
         "kind": "github_release",
         "repo": "agavra/tuicr",
-        "asset": "tuicr-{version}-x86_64-unknown-linux-musl.tar.gz"
+        "asset": "tuicr-{version}-{target}.tar.gz"
       },
       "resolved": {
         "url": "https://github.com/agavra/tuicr/releases/download/v0.24.0/tuicr-0.24.0-x86_64-unknown-linux-musl.tar.gz",
@@ -237,7 +265,7 @@
       "fetch": {
         "kind": "github_release",
         "repo": "max-sixty/worktrunk",
-        "asset": "worktrunk-x86_64-unknown-linux-musl.tar.xz"
+        "asset": "worktrunk-{target}.tar.xz"
       },
       "resolved": {
         "url": "https://github.com/max-sixty/worktrunk/releases/download/v0.75.0/worktrunk-x86_64-unknown-linux-musl.tar.xz",
@@ -251,7 +279,7 @@
       "fetch": {
         "kind": "github_release",
         "repo": "sxyazi/yazi",
-        "asset": "yazi-x86_64-unknown-linux-musl.zip"
+        "asset": "yazi-{target}.zip"
       },
       "resolved": {
         "url": "https://github.com/sxyazi/yazi/releases/download/v26.8.15/yazi-x86_64-unknown-linux-musl.zip",

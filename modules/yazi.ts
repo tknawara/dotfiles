@@ -6,12 +6,13 @@ import { githubRelease, module, symlink, tree, verifyBinary } from "@gripsack/co
 export default module("yazi", {
   fetch: githubRelease({
     repo: "sxyazi/yazi",
-    asset: "yazi-x86_64-unknown-linux-musl.zip",
+    asset: "yazi-{target}.zip",
   }),
   install: {
-    "yazi-x86_64-unknown-linux-musl/yazi": symlink("~/.local/bin/yazi"),
-    "yazi-x86_64-unknown-linux-musl/ya": symlink("~/.local/bin/ya"),
+    "yazi-{target}/yazi": symlink("~/.local/bin/yazi"),
+    "yazi-{target}/ya": symlink("~/.local/bin/ya"),
   },
   config: tree("configs/yazi", "~/.config/yazi", "owned"),
-  verify: verifyBinary("yazi-x86_64-unknown-linux-musl/yazi", ["--version"]),
+    lint: "yazi",
+  verify: verifyBinary("yazi-{target}/yazi", ["--version"]),
 });

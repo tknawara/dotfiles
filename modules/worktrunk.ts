@@ -5,7 +5,6 @@ import { githubRelease, module, symlink, verifyBinary } from "@gripsack/core";
 export default module("worktrunk", {
   fetch: githubRelease({
     repo: "max-sixty/worktrunk",
-    version: "v0.74.0",
     asset: "worktrunk-x86_64-unknown-linux-musl.tar.xz",
   }),
   install: {

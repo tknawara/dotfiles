@@ -6,7 +6,6 @@ import { githubRelease, module, symlink, verifyBinary } from "@gripsack/core";
 export default module("bat", {
   fetch: githubRelease({
     repo: "sharkdp/bat",
-    version: "v0.26.1",
     asset: "bat-{version}-x86_64-unknown-linux-musl.tar.gz",
   }),
   install: { "bat-{version}-x86_64-unknown-linux-musl/bat": symlink("~/.local/bin/bat") },

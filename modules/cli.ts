@@ -48,7 +48,7 @@ export default [
   }),
 
   module("gh", {
-    fetch: pixi("gh", "2.96.0"),
+    fetch: pixi("gh"),
     install: { "bin/gh": symlink("~/.local/bin/gh") },
     verify: verifyBinary("bin/gh", ["auth", "--help"]),
   }),

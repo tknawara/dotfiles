@@ -5,7 +5,6 @@ import { githubRelease, module, symlink, verifyBinary } from "@gripsack/core";
 export default module("tuicr", {
   fetch: githubRelease({
     repo: "agavra/tuicr",
-    version: "v0.22.0",
     asset: "tuicr-{version}-x86_64-unknown-linux-musl.tar.gz",
   }),
   install: { tuicr: symlink("~/.local/bin/tuicr") },

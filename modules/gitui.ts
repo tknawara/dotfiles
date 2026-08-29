@@ -4,7 +4,6 @@ import { githubRelease, module, symlink, tree, verifyBinary } from "@gripsack/co
 export default module("gitui", {
   fetch: githubRelease({
     repo: "gitui-org/gitui",
-    version: "v0.28.1",
     asset: "gitui-linux-x86_64.tar.gz",
   }),
   install: { gitui: symlink("~/.local/bin/gitui") },

@@ -5,7 +5,6 @@ import { githubRelease, module, symlink, verifyBinary } from "@gripsack/core";
 export default module("hunk", {
   fetch: githubRelease({
     repo: "modem-dev/hunk",
-    version: "v0.19.0",
     asset: "hunkdiff-linux-x64.tar.gz",
   }),
   install: { "hunkdiff-linux-x64/hunk": symlink("~/.local/bin/hunk") },

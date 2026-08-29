@@ -6,7 +6,6 @@ import { githubRelease, module, symlink, tree, verifyBinary } from "@gripsack/co
 export default module("yazi", {
   fetch: githubRelease({
     repo: "sxyazi/yazi",
-    version: "v26.8.15",
     asset: "yazi-x86_64-unknown-linux-musl.zip",
   }),
   install: {

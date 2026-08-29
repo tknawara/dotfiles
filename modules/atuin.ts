@@ -5,7 +5,6 @@ import { githubRelease, module, symlink, tree, verifyBinary } from "@gripsack/co
 export default module("atuin", {
   fetch: githubRelease({
     repo: "atuinsh/atuin",
-    version: "v18.19.0",
     asset: "atuin-x86_64-unknown-linux-musl.tar.gz",
   }),
   install: { "atuin-x86_64-unknown-linux-musl/atuin": symlink("~/.local/bin/atuin") },

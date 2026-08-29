@@ -19,6 +19,7 @@ import fish from "../modules/fish.ts";
 import ghDash from "../modules/gh-dash.ts";
 import gitui from "../modules/gitui.ts";
 import helix from "../modules/helix.ts";
+import herdr from "../modules/herdr.ts";
 import hunk from "../modules/hunk.ts";
 import shell from "../modules/shell.ts";
 import starship from "../modules/starship.ts";
@@ -45,6 +46,7 @@ export default defineEnv(() => ({
     worktrunk,
     ghDash,
     hunk,
+    herdr,
     ...cli,
   ],
 }));

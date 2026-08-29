@@ -4,7 +4,7 @@
 import { module, pixi, symlink, tree, verifyBinary } from "@gripsack/core";
 
 export default module("helix", {
-  fetch: pixi("helix", "25.07.1"),
+  fetch: pixi("helix"),
   install: { "bin/hx": symlink("~/.local/bin/hx") },
   config: tree("configs/helix", "~/.config/helix", "owned"),
   verify: verifyBinary("bin/hx", ["--version"]),

@@ -8,7 +8,6 @@ import { dep, githubRelease, module, symlink, tree, verifyBinary } from "@gripsa
 export default module("gh-dash", {
   fetch: githubRelease({
     repo: "dlvhdr/gh-dash",
-    version: "v4.25.2",
     asset: "gh-dash_{version}_linux-amd64",
   }),
   install: { "gh-dash_{version}_linux-amd64": symlink("~/.local/bin/gh-dash") },

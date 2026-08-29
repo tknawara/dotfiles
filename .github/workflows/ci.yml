@@ -1,0 +1,28 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install grip
+        run: curl -fsSL https://gripsack.dev/install.sh | sh
+
+      # grip check = eval + IR sema + config linters, zero side effects —
+      # the CI gate for an env repo. The checkout is not a trusted repo
+      # and CI has no TTY for the prompt, so the trust bypass is explicit.
+      - name: grip check
+        env:
+          GRIPSACK_TRUST_ALL: "1"
+          # authenticated api.github.com — anonymous rate limits flake
+          # on shared runners when linters or resolvers touch the API
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          export PATH="$HOME/.local/bin:$PATH"
+          grip check --host laptop

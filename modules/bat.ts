@@ -3,12 +3,15 @@
  *  {version} — `grip update bat` keeps working. */
 import { githubRelease, module, symlink, verifyBinary } from "@gripsack/core";
 
+// the nested payload dir, once — asset, install, and verify all read it
+const PAYLOAD = "bat-{version}-{target}";
+
 export default module("bat", {
   fetch: githubRelease({
     repo: "sharkdp/bat",
-    asset: "bat-{version}-{target}.tar.gz",
+    asset: `${PAYLOAD}.tar.gz`,
   }),
-  install: { "bat-{version}-{target}/bat": symlink("~/.local/bin/bat") },
+  install: { [`${PAYLOAD}/bat`]: symlink("~/.local/bin/bat") },
   config: { "configs/bat/config": symlink("~/.config/bat/config") },
-  verify: verifyBinary("bat-{version}-{target}/bat", ["--version"]),
+  verify: verifyBinary(`${PAYLOAD}/bat`, ["--version"]),
 });

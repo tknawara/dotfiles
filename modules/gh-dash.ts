@@ -5,6 +5,9 @@
  *  covers the exec bit. */
 import { dep, githubRelease, module, symlink, tree, verifyBinary } from "@gripsack/core";
 
+// a BARE binary asset — one name, referenced by asset/install/verify
+const ASSET = "gh-dash_v{version}_{os}-{arch.go}";
+
 export default module("gh-dash", {
   fetch: githubRelease({
     repo: "dlvhdr/gh-dash",

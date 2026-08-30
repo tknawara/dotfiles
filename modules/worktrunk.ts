@@ -2,14 +2,16 @@
  *  `wt config shell init fish` line in config.fish). */
 import { githubRelease, module, symlink, verifyBinary } from "@gripsack/core";
 
+const PAYLOAD = "worktrunk-{target}";
+
 export default module("worktrunk", {
   fetch: githubRelease({
     repo: "max-sixty/worktrunk",
-    asset: "worktrunk-{target}.tar.xz",
+    asset: `${PAYLOAD}.tar.xz`,
   }),
   install: {
-    "worktrunk-{target}/wt": symlink("~/.local/bin/wt"),
-    "worktrunk-{target}/git-wt": symlink("~/.local/bin/git-wt"),
+    [`${PAYLOAD}/wt`]: symlink("~/.local/bin/wt"),
+    [`${PAYLOAD}/git-wt`]: symlink("~/.local/bin/git-wt"),
   },
-  verify: verifyBinary("worktrunk-{target}/wt", ["--version"]),
+  verify: verifyBinary(`${PAYLOAD}/wt`, ["--version"]),
 });

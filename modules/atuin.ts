@@ -2,13 +2,15 @@
  *  a versionless directory. */
 import { githubRelease, module, symlink, tree, verifyBinary } from "@gripsack/core";
 
+const PAYLOAD = "atuin-{target}";
+
 export default module("atuin", {
   fetch: githubRelease({
     repo: "atuinsh/atuin",
-    asset: "atuin-{target}.tar.gz",
+    asset: `${PAYLOAD}.tar.gz`,
   }),
-  install: { "atuin-{target}/atuin": symlink("~/.local/bin/atuin") },
+  install: { [`${PAYLOAD}/atuin`]: symlink("~/.local/bin/atuin") },
   config: tree("configs/atuin", "~/.config/atuin", "owned"),
     lint: "atuin",
-  verify: verifyBinary("atuin-{target}/atuin", ["--version"]),
+  verify: verifyBinary(`${PAYLOAD}/atuin`, ["--version"]),
 });

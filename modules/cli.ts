@@ -4,14 +4,20 @@
  *  deliberately. */
 import { githubRelease, module, pixi, symlink, verifyBinary } from "@gripsack/core";
 
+// nested payload dirs are named once, referenced everywhere — the
+// const pattern for multi-key payloads
+const RG = "ripgrep-{version}-{target}";
+const FD = "fd-v{version}-{target}";
+const FF = "fastfetch-{os}-{arch.go}";
+
 export default [
   module("ripgrep", {
     fetch: githubRelease({
       repo: "BurntSushi/ripgrep",
-      asset: "ripgrep-{version}-{target}.tar.gz",
+      asset: `${RG}.tar.gz`,
     }),
-    install: { "ripgrep-{version}-{target}/rg": symlink("~/.local/bin/rg") },
-    verify: verifyBinary("ripgrep-{version}-{target}/rg", ["--version"]),
+    install: { [`${RG}/rg`]: symlink("~/.local/bin/rg") },
+    verify: verifyBinary(`${RG}/rg`, ["--version"]),
   }),
 
   module("fd", {
@@ -19,8 +25,8 @@ export default [
       repo: "sharkdp/fd",
       asset: "fd-{version}-{target}.tar.gz",
     }),
-    install: { "fd-{version}-{target}/fd": symlink("~/.local/bin/fd") },
-    verify: verifyBinary("fd-{version}-{target}/fd", ["--version"]),
+    install: { [`${FD}/fd`]: symlink("~/.local/bin/fd") },
+    verify: verifyBinary(`${FD}/fd`, ["--version"]),
   }),
 
   module("eza", {
@@ -35,10 +41,10 @@ export default [
   module("fastfetch", {
     fetch: githubRelease({
       repo: "fastfetch-cli/fastfetch",
-      asset: "fastfetch-{os}-{arch.go}.tar.gz",
+      asset: `${FF}.tar.gz`,
     }),
-    install: { "fastfetch-{os}-{arch.go}/usr/bin/fastfetch": symlink("~/.local/bin/fastfetch") },
-    verify: verifyBinary("fastfetch-{os}-{arch.go}/usr/bin/fastfetch", ["--version"]),
+    install: { [`${FF}/usr/bin/fastfetch`]: symlink("~/.local/bin/fastfetch") },
+    verify: verifyBinary(`${FF}/usr/bin/fastfetch`, ["--version"]),
   }),
 
   module("htop", {

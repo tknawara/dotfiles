@@ -38,6 +38,19 @@ and pin in `locks/laptop.lock`.
 `herdr/` is fully replaced by `modules/herdr.ts`. Nothing left is
 unmanaged — that's the point.
 
+## Working on it (the IDE story)
+
+`npm install` gives you full TypeScript IntelliSense on `hosts/` and
+`modules/` — `@gripsack/core` ships its types, and the install doubles
+as the deliberate pin (the repo's copy shadows the frontend embedded
+in grip). `npx tsc` typechecks everything; `grip check` does the rest.
+
+Module code can also use other npm packages from this repo's
+`node_modules` — they're evaluated read-only under the same sandbox as
+module code (no env, no network, no subprocesses, no filesystem
+outside the repo). A dependency that needs an effect fails loudly at
+eval; that effect belongs in a probe or a fetcher.
+
 ## Layout
 
 - `env.toml` — the environment declaration

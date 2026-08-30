@@ -1,0 +1,9 @@
+{
+  "name": "tknawara-dotfiles",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "@gripsack/core": "^0.17.3",
+    "typescript": "^7"
+  }
+}

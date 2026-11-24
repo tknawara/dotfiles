@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "devDependencies": {
-    "@gripsack/core": "https://github.com/gripsack-dev/gripsack/releases/download/core-v0.58.0/gripsack-core-0.58.0.tgz",
+    "@gripsack/core": "https://github.com/gripsack-dev/gripsack/releases/download/core-v0.59.0/gripsack-core-0.59.0.tgz",
     "@types/node": "^26",
     "typescript": "^7"
   }

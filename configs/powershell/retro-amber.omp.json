@@ -10,7 +10,8 @@
     "subtext0": "#a6adc8",
     "overlay0": "#6c7086",
     "green": "#a6e3a1",
-    "teal": "#94e2d5"
+    "teal": "#94e2d5",
+    "sapphire": "#74c7ec"
   },
   "blocks": [
     {
@@ -18,6 +19,12 @@
       "alignment": "left",
       "newline": true,
       "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "p:overlay0",
+          "template": "╭─ <p:sapphire></> "
+        },
         {
           "type": "text",
           "style": "plain",
@@ -75,6 +82,12 @@
       "alignment": "left",
       "newline": true,
       "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "p:overlay0",
+          "template": "╰─"
+        },
         {
           "type": "text",
           "style": "plain",

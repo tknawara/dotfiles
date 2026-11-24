@@ -3,6 +3,20 @@ __RP_MAXLEN=${__RP_MAXLEN:-48}
 __RP_R=$'\e[0m' __RP_B=$'\e[1m'
 __RP_GRN=$'\e[38;2;166;227;161m' __RP_TEAL=$'\e[38;2;148;226;213m' __RP_YEL=$'\e[38;2;249;226;175m'
 __RP_RED=$'\e[38;2;243;139;168m' __RP_SUB=$'\e[38;2;166;173;200m' __RP_OV=$'\e[38;2;108;112;134m'
+__RP_PEACH=$'\e[38;2;250;179;135m' __RP_BLUE=$'\e[38;2;137;180;250m'
+
+# Distro logo (Nerd Font glyph), read once from /etc/os-release without forking.
+__RP_OS=$'\uf31a' __RP_OSC=$__RP_SUB
+while IFS== read -r __k __v; do
+  [[ $__k == ID ]] || continue
+  case ${__v//\"/} in
+    ubuntu) __RP_OS=$'\uf31b' __RP_OSC=$__RP_PEACH ;;
+    debian) __RP_OS=$'\uf306' __RP_OSC=$__RP_RED ;;
+    arch)   __RP_OS=$'\uf303' __RP_OSC=$__RP_BLUE ;;
+    fedora) __RP_OS=$'\uf30a' __RP_OSC=$__RP_BLUE ;;
+  esac
+done 2>/dev/null < /etc/os-release
+unset __k __v
 
 __rp_tilde() { # $1 path -> REPLY with $HOME as ~
   REPLY=$1

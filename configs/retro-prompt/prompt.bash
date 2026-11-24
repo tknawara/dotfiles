@@ -1,6 +1,6 @@
 # Retro prompt for bash + flyline — Catppuccin Mocha, green variant.
-#   TAREK :: ~/workspace/gripsack/crates :: main*+ :: 4.2s                 14:32
-#   ▶
+#   ╭─  TAREK :: ~/workspace/gripsack/crates :: main*+ :: 4.2s          14:32
+#   ╰─▶
 source ~/.config/retro-prompt/lib.bash
 
 # Git dirty marks run in the background so `git status` never blocks the prompt.
@@ -19,7 +19,7 @@ __rp_prompt() {
   local st=$? sep="\[${__RP_OV}\] :: \[${__RP_R}\]" dur=
   __rp_git
   __rp_path "$PWD" '\[' '\]'
-  local p="\[${__RP_GRN}${__RP_B}\]TAREK\[${__RP_R}\]${sep}${REPLY}"
+  local p="\[${__RP_OV}\]╭─ \[${__RP_OSC}\]${__RP_OS} \[${__RP_GRN}${__RP_B}\]TAREK\[${__RP_R}\]${sep}${REPLY}"
   if [[ -n $__RP_BRANCH ]]; then
     p+="${sep}\[${__RP_YEL}\]${__RP_BRANCH}\[${__RP_R}\]${__RP_MARKS}"
   fi
@@ -33,7 +33,7 @@ __rp_prompt() {
     __RP_T0=
   fi
   local arrow=$__RP_GRN; (( st )) && arrow=$__RP_RED
-  PS1="${p}\n\[${arrow}${__RP_B}\]▶\[${__RP_R}\] "
+  PS1="${p}\n\[${__RP_OV}\]╰─\[${arrow}${__RP_B}\]▶\[${__RP_R}\] "
 }
 RPS1="\[${__RP_OV}\]\A\[${__RP_R}\]"
 PROMPT_COMMAND="__rp_prompt${PROMPT_COMMAND:+;$PROMPT_COMMAND}"

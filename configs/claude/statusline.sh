@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Retro statusline (Catppuccin Mocha, green):  OPUS 5.5 :: ~/workspace/gripsack :: main* :: ctx 48% :: 14:32
+# Retro statusline (Catppuccin Mocha, green):   OPUS 5.5 :: ~/workspace/gripsack :: main* :: ctx 48% :: 14:32
 in=$(cat)
 source ~/.config/retro-prompt/lib.bash
 SEP=" ${__RP_OV}::${__RP_R} "
@@ -8,7 +8,7 @@ dir=$(jq -r '.workspace.current_dir // .cwd // empty' <<<"$in"); dir=${dir:-$PWD
 pct=$(jq -r '.context_window.used_percentage // empty' <<<"$in")
 
 __rp_git "$dir"; __rp_path "$dir"
-out="${__RP_GRN}${__RP_B}${model}${__RP_R}${SEP}${REPLY}"
+out="${__RP_OSC}${__RP_OS}${__RP_R} ${__RP_GRN}${__RP_B}${model}${__RP_R}${SEP}${REPLY}"
 if [[ -n $__RP_BRANCH ]]; then
   out+="${SEP}${__RP_YEL}${__RP_BRANCH}${__RP_R}$(cd "$dir" && ~/.config/retro-prompt/git-marks.sh)"
 fi

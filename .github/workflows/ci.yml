@@ -16,14 +16,17 @@ jobs:
         run: curl -fsSL https://gripsack.dev/install.sh | sh
 
       # grip check = eval + IR sema + config linters, zero side effects —
-      # the CI gate for an env repo. The checkout is not a trusted repo
-      # and CI has no TTY for the prompt, so the trust bypass is explicit.
+      # the CI gate for an env repo. CI has no TTY for the trust prompt, so
+      # it approves exactly the bundle/policy digests of this checkout.
       - name: grip check
         env:
-          GRIPSACK_TRUST_ALL: "1"
           # authenticated api.github.com — anonymous rate limits flake
           # on shared runners when linters or resolvers touch the API
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           export PATH="$HOME/.local/bin:$PATH"
+          trust=$(grip trust inspect --json)
+          grip trust add \
+            --bundle "$(jq -r .bundle_digest <<<"$trust")" \
+            --policy "$(jq -r .policy_digest <<<"$trust")"
           grip check

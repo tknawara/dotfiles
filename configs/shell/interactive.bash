@@ -14,7 +14,7 @@ __cached_init() { # name, command...
 
 # --- rust replacements (originals stay reachable as \ls, command cat, …)
 if type -P eza >/dev/null; then
-  alias ls='eza --group-directories-first'
+  alias ls='eza -lah --group-directories-first --git'
   alias ll='eza -l --git --group-directories-first --time-style=relative'
   alias la='eza -la --git --group-directories-first --time-style=relative'
   alias lt='eza --tree --level=2 --group-directories-first'

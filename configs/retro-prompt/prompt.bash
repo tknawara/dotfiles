@@ -10,8 +10,10 @@ if [[ $(type -t flyline) == builtin ]]; then
   __RP_MARKS=RPGITMARKS
 fi
 
-# Command timer: PS0 stamps the start time without forking.
-PS0='${__RP_T0[$((__RP_T0=${EPOCHREALTIME/./}/1000, 0))]}'
+# Command timer: PS0 stamps the start time without forking. The expansion is a
+# zero-length substring of an empty var, so it records the time but prints nothing.
+__RP_NUL=
+PS0='${__RP_NUL:0:$((__RP_T0=${EPOCHREALTIME/./}/1000, 0))}'
 
 __rp_prompt() {
   local st=$? sep="\[${__RP_OV}\] :: \[${__RP_R}\]" dur=

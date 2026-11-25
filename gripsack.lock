@@ -1,7 +1,7 @@
 {
   "lock_version": 3,
   "definitions": {
-    "frontend": "e94cb270bf985582ce769c4b3b8a444ea2c5e7735fe63688ce634bebbb5374c8"
+    "frontend": "0195eb06103f522206470f2b073daa8610e6d28d0a2f8fbf728f14575d5dbd93"
   },
   "resolutions": {
     "linux-x86_64": {
